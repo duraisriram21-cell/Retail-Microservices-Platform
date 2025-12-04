@@ -1,14 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sales-service
+  name: sales-service       # MUST match base (no namespace here)
 spec:
-  replicas: 1
+  replicas: 2               # dev replicas
   template:
+    metadata:
+      labels:
+        app: sales-service  # label for selector/logs
     spec:
+      securityContext: {}   # remove strict pod security
       containers:
         - name: sales-service
-          image: your-registry/sales-service:dev-1.0.0
+          image: nginx:latest
+          securityContext: {}   # remove runAsUser / readOnlyRootFilesystem
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          startupProbe:
+            httpGet:
+              path: /
+              port: 80
+            failureThreshold: 30
+            periodSeconds: 5
           resources:
             requests:
               cpu: "50m"

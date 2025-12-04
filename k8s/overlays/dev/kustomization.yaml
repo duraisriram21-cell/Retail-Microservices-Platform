@@ -1,0 +1,11 @@
+namespace: retail-dev
+
+resources:
+  - ../../base
+  - namespace.yaml
+
+patchesStrategicMerge:
+  - patch-deployment.yaml
+  - patch-configmap.yaml
+  - secret-sales-service-dev.yaml
+  - service.yaml
