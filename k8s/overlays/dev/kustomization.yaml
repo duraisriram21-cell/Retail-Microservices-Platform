@@ -3,6 +3,7 @@ namespace: retail-dev
 resources:
   - ../../base
   - namespace.yaml
+  - hpa-sales-service.yaml
 
 patchesStrategicMerge:
   - patch-deployment.yaml
