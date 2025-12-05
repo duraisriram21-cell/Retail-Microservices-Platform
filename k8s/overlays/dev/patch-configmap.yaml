@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sales-service-config
+data:
+  LOG_LEVEL: "INFO"
+  FEATURE_FLAG_NEW_UI: "true"
