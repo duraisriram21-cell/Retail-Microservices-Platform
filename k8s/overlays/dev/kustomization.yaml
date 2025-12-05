@@ -4,6 +4,7 @@ resources:
   - ../../base
   - namespace.yaml
   - hpa-sales-service.yaml
+  - ingress-sales-service.yaml
 
 patchesStrategicMerge:
   - patch-deployment.yaml
