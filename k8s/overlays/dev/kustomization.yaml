@@ -10,3 +10,4 @@ patchesStrategicMerge:
   - patch-configmap.yaml
   - secret-sales-service-dev.yaml
   - service.yaml
+  - patch-service-loadbalancer.yaml
